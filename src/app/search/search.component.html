@@ -1,56 +1,64 @@
-
-
-      <h4> Profiles list</h4>
-   
-      <div fxFill fxLayout="column" fxLayoutAlign="space-between">
-        <div fxLayout="row wrap">
-          <ng-container *ngFor="let user of data">
-            <img  src="{{user.file?'https://datingapp-frontend.s3.ap-south-1.amazonaws.com/images/'+user.username:'http://www.ushodhayamatrimonial.com/public/img/profile-default-pic.png'}}" >
-            <mat-card-actions >   <span>  <h6 >Name: {{user.username |titlecase }}</h6></span> 
-                  <span>  <h6  >Email: {{user.email |titlecase }}</h6></span>  
-                  <span>  <h6  >Religion :{{user.religion |titlecase }}</h6></span>  
-                  <span>  <h6  >Gender: {{user.gender |titlecase }}</h6></span> 
-              </mat-card-actions >
-               </ng-container>
+<h4> Profiles list</h4>
+<mat-divider></mat-divider>
+<div fxFill fxLayout="column" fxLayoutAlign="space-between">
+  <div fxLayout="row wrap">
+    <mat-card class="example-card md-margin"  *ngFor="let user of data">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image">
+        <!--  <img
+            src="{{user.file?'https://datingapp-frontend.s3.ap-south-1.amazonaws.com/images/'+user.username:'http://www.ushodhayamatrimonial.com/public/img/profile-default-pic.png'}}"> -->
         </div>
-      
-        <mat-paginator [length]="data.length"
-                      [pageSize]="size"
-                      [pageIndex]="page"
-                      [pageSizeOptions]="[3, 6, 12]"
-                      (page)="getData($event)">
-        </mat-paginator>
-      </div>
-      
+        <mat-card-title>{{user.username |titlecase }}</mat-card-title>
+        <mat-card-subtitle>{{user.gender |titlecase }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <span>
+          <h6>Email: {{user.email |titlecase }}</h6>
+        </span>
+        <span>
+          <h6>Religion :{{user.religion |titlecase }}</h6>
+        </span>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <mat-paginator [length]="data.length" [pageSize]="size" [pageIndex]="page" [pageSizeOptions]="[3, 6, 12]"
+    (page)="getData($event)">
+  </mat-paginator>
+</div>
+
 
 
 
 
 <!--
-  
+
       <h4> Profile lists</h4>
-      
+
       <div class="content">
-      
-        <mat-grid-list 
+
+        <mat-grid-list
         [responsive]="responsive" cols="3"
         (responsiveColsChange)="cols = $event" gutterSize="30px">
         <mat-grid-tile style="background:white" *ngFor="let user of users">
           <img matListAvatar
           src="{{user.file?user.file:'http://www.ushodhayamatrimonial.com/public/img/profile-default-pic.png'}}" >
-          <mat-grid-tile-header>            
+          <mat-grid-tile-header>
             <span>  <h6  >{{user.username |titlecase }}</h6></span>
           </mat-grid-tile-header>
-          <mat-grid-tile-footer> 
-           
+          <mat-grid-tile-footer>
+
             <span> <a class="nav-link" href="#" style="color:white" >View Full Profile</a></span>
           </mat-grid-tile-footer>
-           
-       
+
+
         </mat-grid-tile>
-        
-      </mat-grid-list> 
-      
+
+      </mat-grid-list>
+
       </div>
 -->
-

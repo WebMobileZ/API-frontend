@@ -14,7 +14,7 @@
           </li>
           <li>
             <a routerLink="/login">Login</a>
-            
+
         </li>
       </ul>
   </div>
@@ -23,13 +23,15 @@
         <li>
             <a href="/search" class="nav-link" routerLink="search">All Profiles</a>
         </li>
+
         <li>
-            <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
-        </li>
+          <a href="/profile" class="nav-link" routerLink="profile">My Profile</a>
+      </li>
+
         <li>
-          <a  class="nav-link" (click)="logout()">logout</a>
+          <a  class="nav-link" (click)="logout()">  logout</a>
       </li>
     </ul>
 </div>
- 
+
 </mat-toolbar>

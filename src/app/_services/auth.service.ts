@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
- const AUTH_API = 'http://springbootrestapi-env.mvmbkrpny3.ap-south-1.elasticbeanstalk.com/api/auth/';
-//const AUTH_API = 'http://localhost:5000/api/auth/';
+// const AUTH_API = 'http://springbootrestapi-env.mvmbkrpny3.ap-south-1.elasticbeanstalk.com/api/auth/';
+const AUTH_API = 'http://localhost:5000/api/auth/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -18,13 +18,13 @@ data:any;
   constructor(private http: HttpClient,private router:Router) { }
 
   get isLoggedIn() {
-    if(sessionStorage.getItem("auth-token"))     
+    if(sessionStorage.getItem("auth-token"))
       this.loggedIn.next(true);
       return this.loggedIn.asObservable(); // {2}
- 
+
   }
   login(credentials): Observable<any> {
-   
+
    this.data= this.http.post(AUTH_API + 'signin', {
       username: credentials.username,
       password: credentials.password
@@ -37,7 +37,7 @@ data:any;
   }
 
   register(user): Observable<any> {
-  
+
     return this.http.post(AUTH_API + 'signup', {
       username: user.username,
       email: user.email,
@@ -55,5 +55,5 @@ data:any;
     this.loggedIn.next(false);
     this.router.navigate(['/login']);
   }
- 
+
 }
